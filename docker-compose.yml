@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+
+  telegram-file-uploader:
+    image: telegram-file-uploader:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: telegram-file-uploader
+    restart: always
+    env_file:
+      - ./.env
+    volumes:
+      - ./data:/home/node/app/data
+      - ./storage:/home/node/app/storage
