@@ -1,6 +1,10 @@
 const fs = require('fs');
 const path = require('path');
-const DB_PATH = path.join(__dirname, '../data/db.json');
+const DB_PATH = path.join(__dirname, './data/db.json');
+
+if (!fs.existsSync(DB_PATH)) {
+    fs.writeFileSync(DB_PATH, '{}');
+}
 
 exports.get = function (key) {
     const db = JSON.parse(fs.readFileSync(DB_PATH));
